@@ -76,12 +76,12 @@ function App() {
           break;
         }
         case "USER_JOINED": {
-          setListUsers([...listUsers, data]);
+          setListUsers(current => [...current, data]);
           cursorRef.current!.createCursor(data.id, data.name, data.color);
           break;
         }
         case "USER_LEAVED": {
-          setListUsers(listUsers.filter((item: User) => item.id !== data.id));
+          setListUsers(current => current.filter((item: User) => item.id !== data.id));
           cursorRef.current!.removeCursor(data.id);
           break;
         }
