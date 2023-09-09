@@ -1,6 +1,6 @@
 # Colab Editor
 <div align="center">
-  <img src="./demo.png"
+  <img src="./demo.png" />
 </div>
 This is demo for colaborative editor using Quill Editor and React
 
