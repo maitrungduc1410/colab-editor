@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# Colab Editor
+This is demo for colaborative editor using Quill Editor and React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Demo: https://colab-editor.jamesisme.com
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+# Setup
+Install dependencies:
+```
+yarn install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Then start project
+```
+yarn dev
+```
+# Build
+## Native build
+To build the project, run:
+```
+yarn build
+```
+Then start project with:
+```
+yarn start
+```
+## Docker build
+
+The project can also be built with Docker
+```
+docker build -t colab-editor .
+```
+Then start with Docker compose
+```
+docker compose up -d
+```
+Then you should be able to access the app at `http://localhost:3030`
