@@ -4,9 +4,11 @@ import { v4 } from "uuid";
 import Delta from "quill-delta";
 import { faker } from "@faker-js/faker";
 import randomColor from "randomcolor"; // import the script
+import { resolve } from "path";
 
 const app = express();
 expressWs(app);
+app.use(express.static("dist"));
 
 // Store the document content and change history as Quill deltas
 const document = {
@@ -30,7 +32,7 @@ function sendTo(ws, type, data) {
   ws.send(JSON.stringify({ type, data }));
 }
 
-app.ws("/editor", (ws) => {
+app.ws("/api/editor", (ws) => {
   console.log("client connected");
   const clientId = v4();
   const user = {
@@ -90,6 +92,11 @@ app.ws("/editor", (ws) => {
     clients.delete(clientId);
     broadcastChange(clientId, "USER_LEAVED", { id: clientId });
   });
+});
+
+app.get("*", (req, res) => {
+  // eslint-disable-next-line no-undef
+  res.sendFile(resolve(__dirname, "dist", "index.html"));
 });
 
 // eslint-disable-next-line no-undef

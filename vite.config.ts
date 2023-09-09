@@ -8,8 +8,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "ws://localhost:3000",
-        ws: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        ws: true
       },
     },
   },
