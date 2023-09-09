@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import "./App.css";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -9,6 +9,7 @@ import { Avatar } from "primereact/avatar";
 import { AvatarGroup } from "primereact/avatargroup";
 import { Tag } from "primereact/tag";
 import IQuillRange from "quill-cursors/dist/quill-cursors/i-range";
+import { Tooltip } from "primereact/tooltip";
 
 Quill.register("modules/cursors", QuillCursors);
 
@@ -108,12 +109,20 @@ function App() {
         start={
           <AvatarGroup>
             {listUsers.map((item) => (
-              <Avatar
-                key={item.id}
-                label={item.name.charAt(0)}
-                shape="circle"
-                style={{ backgroundColor: item.color }}
-              />
+              <Fragment key={item.id}>
+                <Tooltip
+                  target={`#avatar_${item.id}`}
+                  content={item.name}
+                  position="top"
+                ></Tooltip>
+                <Avatar
+                  id={`avatar_${item.id}`}
+                  label={item.name.charAt(0)}
+                  shape="circle"
+                  style={{ backgroundColor: item.color }}
+                  className="transition-all	transition-duration-200 border-2 border-transparent hover:border-primary"
+                />
+              </Fragment>
             ))}
           </AvatarGroup>
         }
